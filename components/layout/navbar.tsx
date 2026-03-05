@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Search, Sparkles, Menu, X } from "lucide-react"
+import { Sparkles, Menu, X } from "lucide-react"
 
 const navLinks = [
   { href: "/", label: "Domov" },
-  { href: "/znanje", label: "Vse o nepremičninah" },
+  { href: "/znanje", label: "Znanje" },
   { href: "/novice", label: "Novice" },
   { href: "/oglasi", label: "Oglasi" },
 ]
@@ -19,7 +19,7 @@ export function Navbar({ onOpenChat }: { onOpenChat: () => void }) {
   const isHome = pathname === "/"
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    const handleScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -30,75 +30,64 @@ export function Navbar({ onOpenChat }: { onOpenChat: () => void }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         showSolid
-          ? "bg-card/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.05)]"
+          ? "bg-background/96 backdrop-blur-md border-b border-border/60"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4 lg:px-10">
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-3.5 lg:px-10">
+
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative flex items-center justify-center w-9 h-9">
-            <div className="absolute inset-0 rounded-md bg-primary/10 group-hover:bg-primary/15 transition-colors" />
-            <span className="font-serif text-lg font-bold text-primary relative">N</span>
-          </div>
-          <div className="flex flex-col">
-            <span className={`font-serif text-[15px] font-bold tracking-tight leading-none ${showSolid ? "text-foreground" : "text-white"}`}>
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex flex-col leading-none">
+            <span className={`font-serif text-[17px] font-bold tracking-tight ${showSolid ? "text-foreground" : "text-white"}`}>
               Nepremičnine
             </span>
-            <span className={`text-[11px] uppercase tracking-[0.2em] font-medium leading-none mt-0.5 ${showSolid ? "text-primary" : "text-primary"}`}>
+            <span className="text-[9px] uppercase tracking-[0.35em] font-semibold text-primary mt-0.5">
               na dlani
             </span>
           </div>
+          <div className={`w-px h-7 ${showSolid ? "bg-border" : "bg-white/20"} ml-1`} />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`relative px-4 py-2 text-[13px] font-medium uppercase tracking-wider transition-colors ${
+              className={`relative px-5 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors ${
                 pathname === link.href
-                  ? showSolid ? "text-primary" : "text-primary"
+                  ? "text-primary"
                   : showSolid
-                    ? "text-foreground/70 hover:text-foreground"
-                    : "text-white/70 hover:text-white"
+                    ? "text-foreground/55 hover:text-foreground"
+                    : "text-white/55 hover:text-white"
               }`}
             >
               {link.label}
               {pathname === link.href && (
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-primary" />
+                <span className="absolute bottom-0 left-5 right-5 h-px bg-primary" />
               )}
             </Link>
           ))}
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-2">
-          <Link
-            href="/oglasi"
-            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-md transition-colors ${
-              showSolid
-                ? "hover:bg-secondary text-foreground/60"
-                : "hover:bg-white/10 text-white/70"
-            }`}
-            aria-label="Iskanje"
-          >
-            <Search className="w-[18px] h-[18px]" />
-          </Link>
+        <div className="flex items-center gap-3">
           <button
             onClick={onOpenChat}
-            className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-[13px] font-semibold uppercase tracking-wider rounded-md hover:bg-gold-hover transition-colors cursor-pointer"
+            className={`hidden sm:flex items-center gap-2 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] border transition-colors cursor-pointer ${
+              showSolid
+                ? "border-primary text-primary hover:bg-primary hover:text-white"
+                : "border-white/30 text-white/80 hover:border-white hover:text-white"
+            }`}
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-3 h-3" />
             AI Pomočnik
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden flex items-center justify-center w-10 h-10 rounded-md transition-colors cursor-pointer ${
-              showSolid
-                ? "hover:bg-secondary text-foreground"
-                : "hover:bg-white/10 text-white"
+            className={`md:hidden flex items-center justify-center w-9 h-9 transition-colors cursor-pointer ${
+              showSolid ? "text-foreground" : "text-white"
             }`}
             aria-label="Meni"
           >
@@ -109,30 +98,27 @@ export function Navbar({ onOpenChat }: { onOpenChat: () => void }) {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden bg-card border-t border-border">
-          <nav className="flex flex-col px-6 py-4 gap-1">
+        <div className="md:hidden bg-background border-t border-border">
+          <nav className="flex flex-col px-6 py-6 gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                className={`px-0 py-3 text-sm font-semibold uppercase tracking-[0.1em] border-b border-border transition-colors ${
                   pathname === link.href
-                    ? "bg-gold-light text-primary"
-                    : "text-foreground/70 hover:bg-secondary hover:text-foreground"
+                    ? "text-primary"
+                    : "text-foreground/60 hover:text-foreground"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
             <button
-              onClick={() => {
-                setMobileOpen(false)
-                onOpenChat()
-              }}
-              className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md cursor-pointer"
+              onClick={() => { setMobileOpen(false); onOpenChat() }}
+              className="mt-4 flex items-center justify-center gap-2 px-5 py-3 border border-primary text-primary text-sm font-semibold uppercase tracking-[0.1em] cursor-pointer"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-3.5 h-3.5" />
               AI Pomočnik
             </button>
           </nav>

@@ -20,11 +20,12 @@ export default function NewsPage() {
   return (
     <div className="pt-28 pb-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-primary mb-3">
+        <p className="text-[9px] uppercase tracking-[0.45em] font-semibold text-primary mb-4 flex items-center gap-3">
+          <span className="w-6 h-px bg-primary inline-block" />
           Novice
         </p>
-        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground">S trga nepremičnin</h1>
-        <p className="text-muted-foreground mt-3 max-w-lg">
+        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground leading-tight">S trga nepremičnin</h1>
+        <p className="text-muted-foreground mt-3 max-w-lg font-light">
           Aktualno dogajanje na slovenskem nepremičninskem trgu
         </p>
 
@@ -33,10 +34,10 @@ export default function NewsPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-md text-[13px] font-medium transition-colors cursor-pointer ${
+              className={`px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] border transition-colors cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-card border border-border text-muted-foreground hover:text-foreground"
+                  ? "bg-accent text-accent-foreground border-accent"
+                  : "bg-transparent border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
               }`}
             >
               {cat === "vse" ? "Vse" : newsCategoryLabels[cat] || cat}

@@ -55,11 +55,12 @@ export default function ListingsPage() {
   return (
     <div className="pt-28 pb-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-primary mb-3">
+        <p className="text-[9px] uppercase tracking-[0.45em] font-semibold text-primary mb-4 flex items-center gap-3">
+          <span className="w-6 h-px bg-primary inline-block" />
           Nepremičnine
         </p>
-        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground">Oglasi</h1>
-        <p className="text-muted-foreground mt-3 max-w-lg">
+        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground leading-tight">Oglasi</h1>
+        <p className="text-muted-foreground mt-3 max-w-lg font-light">
           Poiščite svojo idealno nepremičnino
         </p>
 

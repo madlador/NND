@@ -15,29 +15,27 @@ const infoLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-accent text-accent-foreground">
+    <footer className="bg-[#0C1220] text-white/70">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Top border accent */}
-        <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-          {/* Brand column */}
+        {/* Gold accent line */}
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+        {/* Wordmark row */}
+        <div className="py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+          {/* Brand */}
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="relative flex items-center justify-center w-9 h-9">
-                <div className="absolute inset-0 rounded-md bg-primary/20" />
-                <span className="font-serif text-lg font-bold text-primary relative">N</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-[15px] font-bold tracking-tight leading-none text-accent-foreground">
-                  Nepremičnine
-                </span>
-                <span className="text-[11px] uppercase tracking-[0.2em] font-medium leading-none mt-0.5 text-primary">
-                  na dlani
-                </span>
-              </div>
+            <Link href="/" className="inline-block group">
+              <p className="font-serif text-3xl font-bold text-white tracking-tight leading-none">
+                Nepremičnine
+              </p>
+              <p className="text-[10px] uppercase tracking-[0.4em] font-semibold text-primary mt-1.5">
+                na dlani
+              </p>
             </Link>
-            <p className="text-sm text-stone-400 max-w-xs leading-relaxed mt-5">
+            <div className="w-12 h-px bg-primary/40 my-6" />
+            <p className="text-sm text-white/35 max-w-xs leading-loose font-light">
               Baza znanja, aktualne novice in preverjena ponudba
               nepremičnin v Sloveniji.
             </p>
@@ -45,15 +43,15 @@ export function Footer() {
 
           {/* Portal */}
           <div className="lg:col-span-3">
-            <h4 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-stone-500 mb-5">
+            <h4 className="text-[9px] uppercase tracking-[0.4em] font-semibold text-white/30 mb-6">
               Portal
             </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-4">
               {portalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-stone-400 hover:text-primary transition-colors"
+                    className="text-sm text-white/45 hover:text-primary transition-colors font-light tracking-wide"
                   >
                     {link.label}
                   </Link>
@@ -64,15 +62,15 @@ export function Footer() {
 
           {/* Information */}
           <div className="lg:col-span-4">
-            <h4 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-stone-500 mb-5">
+            <h4 className="text-[9px] uppercase tracking-[0.4em] font-semibold text-white/30 mb-6">
               Informacije
             </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-4">
               {infoLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-stone-400 hover:text-primary transition-colors"
+                    className="text-sm text-white/45 hover:text-primary transition-colors font-light tracking-wide"
                   >
                     {link.label}
                   </Link>
@@ -82,12 +80,12 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Bottom bar */}
         <div className="border-t border-white/[0.06] py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-stone-500">
+          <p className="text-[11px] text-white/25 font-light tracking-wide">
             &copy; {new Date().getFullYear()} Nepremičnine na dlani. Vse pravice pridržane.
           </p>
-          <p className="text-xs text-stone-600">
+          <p className="text-[11px] text-white/20 font-light tracking-wide">
             Ljubljana, Slovenija
           </p>
         </div>
