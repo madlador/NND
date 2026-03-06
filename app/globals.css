@@ -5,11 +5,11 @@
 
 :root {
   /* Brand */
-  --color-blue: #0065cb;
-  --color-blue-dark: #0057ad;
-  --color-navy: #0d1821;
-  --color-sage: #77b978;
-  --color-coral: #f37262;
+  --brand-blue: #0065cb;
+  --brand-blue-dark: #0057ad;
+  --brand-navy: #0d1821;
+  --brand-sage: #77b978;
+  --brand-coral: #f37262;
 
   /* Neutrals */
   --color-text: #2c2c2c;
@@ -72,11 +72,11 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-blue: var(--color-blue);
-  --color-blue-dark: var(--color-blue-dark);
-  --color-navy: var(--color-navy);
-  --color-sage: var(--color-sage);
-  --color-coral: var(--color-coral);
+  --color-blue: var(--brand-blue);
+  --color-blue-dark: var(--brand-blue-dark);
+  --color-navy: var(--brand-navy);
+  --color-sage: var(--brand-sage);
+  --color-coral: var(--brand-coral);
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 4px);
