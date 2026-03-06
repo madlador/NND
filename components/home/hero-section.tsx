@@ -23,7 +23,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
       {/* Background image */}
       <Image
         src="/images/hero-bg.jpg"
@@ -32,74 +32,56 @@ export function HeroSection() {
         className="object-cover"
         priority
       />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-[#0d1821]/70" />
 
-      {/* Layered overlay — heavier on left, lighter on right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0C1220]/95 via-[#0C1220]/70 to-[#0C1220]/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0C1220]/98 via-transparent to-[#0C1220]/40" />
-
-      {/* Floating label — top right */}
-      <div
-        className="absolute top-28 right-10 hidden lg:flex flex-col items-end gap-1.5 animate-fade-in"
-        style={{ animationDelay: "1s" }}
-      >
-        <span className="text-[9px] uppercase tracking-[0.4em] text-white/25">Slovenija</span>
-        <span className="text-[9px] uppercase tracking-[0.4em] text-primary/50">Nepremičninski Trg</span>
-      </div>
-
-      {/* Main content — bottom-left editorial layout */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pb-24 lg:pb-32">
-
-        {/* Section label with rule */}
-        <div
-          className="flex items-center gap-4 mb-10 animate-fade-up"
-          style={{ animationDelay: "0.1s" }}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 py-32">
+        {/* Label */}
+        <p
+          className="text-[11px] uppercase tracking-[0.3em] font-semibold text-white/60 mb-5 animate-fade-up"
+          style={{ animationDelay: "0.05s" }}
         >
-          <div className="w-8 h-px bg-primary animate-reveal-line" />
-          <span className="text-[9px] uppercase tracking-[0.45em] font-semibold text-primary/80">
-            001 — Vaš vodnik po nepremičninskem trgu
-          </span>
-        </div>
+          Vse o nepremičninah na enem mestu
+        </p>
 
-        {/* Hero heading */}
+        {/* Heading */}
         <h1
-          className="font-serif text-[4rem] md:text-[6rem] lg:text-[7.5rem] font-bold text-white leading-[0.9] tracking-tight mb-10 animate-fade-up"
-          style={{ animationDelay: "0.2s" }}
+          className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-5 max-w-3xl animate-fade-up"
+          style={{ animationDelay: "0.15s" }}
         >
-          Vse, kar<br />
-          morate<br />
-          <em className="text-primary not-italic">vedeti.</em>
+          Vaš vodnik po<br />
+          <span className="text-primary">nepremičninskem</span> trgu
         </h1>
 
-        {/* Subline */}
         <p
-          className="text-sm text-white/45 max-w-xs leading-loose mb-10 font-light tracking-wide animate-fade-up"
-          style={{ animationDelay: "0.35s" }}
+          className="text-base text-white/60 max-w-md leading-relaxed mb-10 animate-fade-up"
+          style={{ animationDelay: "0.25s" }}
         >
           Baza znanja, aktualne novice in preverjena ponudba na enem mestu.
         </p>
 
-        {/* Search */}
+        {/* Search bar */}
         <form
           onSubmit={handleSearch}
-          className="max-w-xl animate-fade-up"
-          style={{ animationDelay: "0.45s" }}
+          className="max-w-2xl animate-fade-up"
+          style={{ animationDelay: "0.35s" }}
         >
-          <div className="flex items-stretch border border-white/20 bg-white/[0.05] backdrop-blur-sm focus-within:border-primary/50 hover:border-white/30 transition-colors duration-300">
+          <div className="flex items-stretch bg-white rounded overflow-hidden shadow-lg">
             <div className="flex items-center flex-1 px-5 gap-3">
-              <Search className="w-4 h-4 text-white/30 shrink-0" />
+              <Search className="w-4 h-4 text-muted-foreground shrink-0" />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Iščem stanovanje v Ljubljani..."
-                className="flex-1 py-4 bg-transparent text-sm text-white placeholder:text-white/30 focus:outline-none font-light tracking-wide"
+                className="flex-1 py-4 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
             </div>
             <button
               type="submit"
-              className="flex items-center gap-2 px-6 py-4 bg-primary text-white text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-gold-hover transition-colors shrink-0 cursor-pointer"
+              className="flex items-center gap-2 px-7 py-4 bg-primary text-white text-sm font-semibold hover:bg-blue-dark transition-colors shrink-0 cursor-pointer"
             >
-              Išči <ArrowRight className="w-3.5 h-3.5" />
+              Iskanje <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -109,7 +91,7 @@ export function HeroSection() {
               <button
                 key={f.label}
                 onClick={() => router.push(`/oglasi?${f.param}`)}
-                className="px-3 py-1.5 text-[10px] font-semibold text-white/35 border border-white/10 uppercase tracking-[0.15em] hover:border-primary/50 hover:text-primary/80 transition-all cursor-pointer"
+                className="px-4 py-2 rounded text-[12px] font-semibold text-white/60 border border-white/20 hover:border-white/50 hover:text-white transition-all cursor-pointer"
               >
                 {f.label}
               </button>
@@ -118,8 +100,8 @@ export function HeroSection() {
         </form>
       </div>
 
-      {/* Bottom fade to background */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   )
 }

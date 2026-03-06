@@ -1,19 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Raleway } from 'next/font/google'
+import { Montserrat, Open_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const playfairDisplay = Playfair_Display({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  weight: ['600', '700', '800'],
+  variable: '--font-montserrat',
 })
 
-const raleway = Raleway({
+const openSans = Open_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-raleway',
+  weight: ['400', '600'],
+  variable: '--font-open-sans',
 })
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0F172A',
+  themeColor: '#0d1821',
 }
 
 export default function RootLayout({
@@ -32,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sl">
-      <body className={`${raleway.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <body className={`${openSans.variable} ${montserrat.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

@@ -15,27 +15,21 @@ const infoLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#0C1220] text-white/70">
+    <footer className="bg-[#0d1821] text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
-        {/* Gold accent line */}
-        <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-
-        {/* Wordmark row */}
-        <div className="py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
-
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
           {/* Brand */}
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-block group">
-              <p className="font-serif text-3xl font-bold text-white tracking-tight leading-none">
+            <Link href="/" className="inline-block group mb-5">
+              <p className="font-serif text-xl font-bold text-white tracking-tight">
                 Nepremičnine
               </p>
-              <p className="text-[10px] uppercase tracking-[0.4em] font-semibold text-primary mt-1.5">
+              <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-primary mt-0.5">
                 na dlani
               </p>
             </Link>
-            <div className="w-12 h-px bg-primary/40 my-6" />
-            <p className="text-sm text-white/35 max-w-xs leading-loose font-light">
+            <p className="text-sm text-white/50 max-w-xs leading-relaxed">
               Baza znanja, aktualne novice in preverjena ponudba
               nepremičnin v Sloveniji.
             </p>
@@ -43,15 +37,15 @@ export function Footer() {
 
           {/* Portal */}
           <div className="lg:col-span-3">
-            <h4 className="text-[9px] uppercase tracking-[0.4em] font-semibold text-white/30 mb-6">
+            <h4 className="text-[11px] uppercase tracking-[0.25em] font-semibold text-white/40 mb-5">
               Portal
             </h4>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-3">
               {portalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 hover:text-primary transition-colors font-light tracking-wide"
+                    className="text-sm text-white/50 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -62,15 +56,15 @@ export function Footer() {
 
           {/* Information */}
           <div className="lg:col-span-4">
-            <h4 className="text-[9px] uppercase tracking-[0.4em] font-semibold text-white/30 mb-6">
+            <h4 className="text-[11px] uppercase tracking-[0.25em] font-semibold text-white/40 mb-5">
               Informacije
             </h4>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-3">
               {infoLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 hover:text-primary transition-colors font-light tracking-wide"
+                    className="text-sm text-white/50 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -80,12 +74,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-white/25 font-light tracking-wide">
+        <div className="border-t border-white/[0.08] py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Nepremičnine na dlani. Vse pravice pridržane.
           </p>
-          <p className="text-[11px] text-white/20 font-light tracking-wide">
+          <p className="text-xs text-white/25">
             Ljubljana, Slovenija
           </p>
         </div>

@@ -30,19 +30,18 @@ export default function KnowledgePage() {
   return (
     <div className="pt-28 pb-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="text-[9px] uppercase tracking-[0.45em] font-semibold text-primary mb-4 flex items-center gap-3">
-          <span className="w-6 h-px bg-primary inline-block" />
+        <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-primary mb-3">
           Baza znanja
         </p>
-        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground leading-tight">Vse o nepremičninah</h1>
-        <p className="text-muted-foreground mt-3 max-w-lg font-light">
+        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground">Vse o nepremičninah</h1>
+        <p className="text-muted-foreground mt-3 max-w-lg">
           Baza znanja o nakupu, prodaji, najemu in vseh postopkih
         </p>
 
         <div className="mt-10 flex flex-col lg:flex-row gap-10">
           {/* Sidebar */}
           <aside className="w-full lg:w-56 shrink-0">
-            <p className="text-[9px] uppercase tracking-[0.4em] font-semibold text-muted-foreground mb-4 hidden lg:block">
+            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-4 hidden lg:block">
               Kategorije
             </p>
             <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
@@ -50,14 +49,14 @@ export default function KnowledgePage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex items-center justify-between px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.1em] whitespace-nowrap border transition-colors cursor-pointer ${
+                  className={`flex items-center justify-between px-4 py-2.5 rounded text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                     activeCategory === cat
-                      ? "border-primary text-primary bg-primary/5"
-                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
                 >
                   <span>{cat === "vse" ? "Vse" : categoryLabels[cat] || cat}</span>
-                  <span className={`ml-2 text-[10px] font-light ${activeCategory === cat ? "text-primary/60" : "text-muted-foreground/50"}`}>
+                  <span className={`ml-2 text-xs ${activeCategory === cat ? "text-primary/60" : "text-muted-foreground/60"}`}>
                     {categoryCounts[cat] || 0}
                   </span>
                 </button>
@@ -68,14 +67,14 @@ export default function KnowledgePage() {
           {/* Main content */}
           <div className="flex-1">
             <div className="mb-8">
-              <div className="flex items-center bg-card border border-border px-5 gap-3">
+              <div className="flex items-center bg-card rounded-lg border border-border px-5 gap-3">
                 <Search className="w-4 h-4 text-muted-foreground shrink-0" />
                 <input
                   type="text"
                   placeholder="Išči v bazi znanja..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 py-3.5 bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none font-light"
+                  className="flex-1 py-3.5 bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none"
                 />
               </div>
             </div>
